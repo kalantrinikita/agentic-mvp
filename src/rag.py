@@ -1,7 +1,6 @@
 """RAG engine: chunk, embed, store, retrieve."""
 import time
 from pathlib import Path
-from typing import Optional
 
 import chromadb
 from chromadb.utils import embedding_functions
@@ -33,7 +32,7 @@ class RAGEngine:
         # Get or create a collection (think: a table in a regular DB)
         self.collection = self.client.get_or_create_collection(
             name=collection_name,
-            embedding_function=self.embedder,
+            embedding_function=self.embedder,  # type: ignore[arg-type]
         )
 
     # ──────────────────────────────────────────────────────────
@@ -67,22 +66,24 @@ class RAGEngine:
 
         # Chroma needs: ids, documents (the text), optional metadata
         ids = [f"{doc_id_prefix}_{i}" for i in range(len(chunks))]
-        metadatas = [{"source": file_path.name, "chunk_index": i} for i in range(len(chunks))]
+        metadatas = [
+            {"source": file_path.name, "chunk_index": i} for i in range(len(chunks))
+        ]
 
         self.collection.add(
             ids=ids,
             documents=chunks,
-            metadatas=metadatas,
+            metadatas=metadatas,  # type: ignore[arg-type]
         )
 
         return len(chunks)
 
-    def reset_collection(self):
+    def reset_collection(self) -> None:
         """Wipe the collection and start fresh."""
         self.client.delete_collection(name=self.collection.name)
         self.collection = self.client.get_or_create_collection(
             name=COLLECTION_NAME,
-            embedding_function=self.embedder,
+            embedding_function=self.embedder,  # type: ignore[arg-type]
         )
 
     # ──────────────────────────────────────────────────────────
@@ -103,15 +104,16 @@ class RAGEngine:
 
         retrieval_time = time.perf_counter() - start
 
-        # Chroma returns a dict with lists wrapped in another list (for batching)
-        chunks = results["documents"][0]        # list of chunk texts
-        distances = results["distances"][0]      # list of distances (lower = closer)
-        metadatas = results["metadatas"][0]      # list of metadata dicts
+        # Chroma returns a dict with lists wrapped in another list (for batching).
+        # Fields can be None in the type stubs — default to empty wrappers for safety.
+        documents_batch = results.get("documents") or [[]]
+        distances_batch = results.get("distances") or [[]]
+        metadatas_batch = results.get("metadatas") or [[]]
 
         return {
-            "chunks": chunks,
-            "distances": distances,
-            "metadatas": metadatas,
+            "chunks": list(documents_batch[0]),
+            "distances": list(distances_batch[0]),
+            "metadatas": list(metadatas_batch[0]),
             "retrieval_time": retrieval_time,
             "query": query,
         }
