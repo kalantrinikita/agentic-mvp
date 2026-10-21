@@ -218,3 +218,24 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# ──────────────────────────────────────
+# Project-specific ignores (Phase 1 + 2)
+# ──────────────────────────────────────
+
+# Latency logs (local metrics, grows forever)
+logs/
+*.jsonl
+
+# ChromaDB persistent storage
+chroma_db/
+
+# Virtual environments
+venv/
+.venv/
+
+# Environment variables
+.env
+
+# Experimental scripts (optional — comment out if you want to keep them)
+explore_embeddings.py

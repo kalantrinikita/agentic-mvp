@@ -1,4 +1,4 @@
-"""Latency logger — captures TTFT and total generation time."""
+"""Latency logger — captures retrieval + LLM metrics."""
 import json
 from datetime import datetime
 from pathlib import Path
@@ -8,7 +8,7 @@ from src.config import LATENCY_LOG
 
 
 class LatencyLogger:
-    """Records TTFT (Time to First Token) and total generation time."""
+    """Records retrieval + LLM latency metrics."""
 
     def __init__(self, log_path: Path = LATENCY_LOG):
         self.log_path = log_path
@@ -22,6 +22,8 @@ class LatencyLogger:
         total_seconds: float,
         tokens_generated: Optional[int] = None,
         phase: str = "phase1",
+        retrieval_seconds: Optional[float] = None,
+        chunks_retrieved: Optional[int] = None,
     ) -> dict:
         """Append one latency record to the JSONL log."""
         record = {
@@ -38,6 +40,11 @@ class LatencyLogger:
                 if tokens_generated and total_seconds > 0
                 else None
             ),
+            # Phase 2 additions:
+            "retrieval_seconds": (
+                round(retrieval_seconds, 3) if retrieval_seconds is not None else None
+            ),
+            "chunks_retrieved": chunks_retrieved,
         }
 
         with open(self.log_path, "a") as f:

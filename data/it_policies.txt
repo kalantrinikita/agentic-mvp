@@ -1,0 +1,37 @@
+=== COMPANY IT POLICIES ===
+Last updated: January 2026
+
+
+SECTION 1: VPN SETUP
+
+All employees must use the corporate VPN when accessing company resources from outside the office network. The approved VPN client is Cisco AnyConnect version 4.10 or higher. New employees receive their VPN credentials via encrypted email from the IT security team within 24 hours of their start date. VPN sessions automatically disconnect after 8 hours of inactivity. Employees should connect to the vpn.company.com server using their SSO credentials. Multi-factor authentication is mandatory for all VPN connections. For VPN support, contact the IT helpdesk at ext. 4357 or email helpdesk@company.com.
+
+
+SECTION 2: HARDWARE REQUESTS
+
+Employees can request new hardware through the IT portal at itportal.company.com. Standard hardware allowances are: one laptop (refreshed every 3 years), one external monitor (refreshed every 5 years), one keyboard, and one mouse. Additional monitors beyond the standard allowance require manager approval. Hardware requests are typically fulfilled within 5-7 business days. For urgent requests, employees should contact their manager who can escalate to the IT director. Returned hardware must be in working condition; damaged items may be charged to the employee's cost center. The maximum budget for ad-hoc hardware requests without manager approval is $200 USD.
+
+
+SECTION 3: PASSWORD POLICY
+
+All corporate passwords must be at least 14 characters long and include uppercase letters, lowercase letters, numbers, and special characters. Passwords must be changed every 90 days. The last 10 passwords cannot be reused. Passwords should not contain personal information such as names, birthdays, or common dictionary words. Employees must use the approved password manager (1Password Business) to store work-related credentials. Sharing passwords with colleagues is strictly prohibited, even for troubleshooting purposes. If an employee suspects their password has been compromised, they must reset it immediately and report the incident to security@company.com.
+
+
+SECTION 4: SOFTWARE INSTALLATION
+
+Only software from the approved software catalog may be installed on company devices. The approved catalog is available at software.company.com. Non-approved software installations require submitting a request ticket to IT with business justification. All software must be licensed appropriately; using pirated or unlicensed software is grounds for termination. Open-source software with permissive licenses (MIT, Apache 2.0, BSD) is generally approved; GPL-licensed software requires legal review. Developers may install development tools like VS Code, Docker, and Git without additional approval. Browser extensions must be reviewed and approved before installation.
+
+
+SECTION 5: INCIDENT REPORTING
+
+Any suspected security incident must be reported within 1 hour of discovery. Report incidents through the IT ticketing system or by calling the security hotline at ext. 911. Examples of incidents include: phishing emails, suspected malware, lost or stolen devices, unauthorized access, and data leaks. Employees should not attempt to investigate incidents themselves; preserve all evidence and let the security team handle it. For lost or stolen company devices, the device will be remotely wiped within 2 hours of the report. There is no penalty for reporting security concerns, even if they turn out to be false alarms.
+
+
+SECTION 6: REMOTE WORK
+
+Remote work is permitted up to 3 days per week with manager approval. Full-time remote arrangements require VP-level approval. All remote work must be conducted using company-provided equipment on secured home networks (WPA2 or WPA3 encrypted WiFi). Public WiFi is prohibited for accessing company resources without VPN. Remote workers must be available during their team's core hours (10 AM - 3 PM local time). Confidential meetings should be conducted from private spaces, not coffee shops or shared workspaces. Camera-on policy applies to all meetings with external parties.
+
+
+SECTION 7: DATA BACKUP
+
+All employee work files must be stored in the approved cloud storage (OneDrive for Business). Local desktop and documents folders are automatically backed up every 4 hours. External drives for backup are not approved; employees should rely on cloud sync. Project data in team shared drives is backed up nightly with 30-day retention. Critical databases are backed up every 15 minutes with point-in-time recovery available for 7 days. Employees are responsible for ensuring their work is saved to approved locations; data loss on unapproved storage is not recoverable.
